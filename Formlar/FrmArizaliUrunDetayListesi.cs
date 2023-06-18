@@ -16,6 +16,19 @@ namespace TeknikServis.Formlar
         {
             InitializeComponent();
         }
-        
+        DbTeknikServisEntities db = new DbTeknikServisEntities();
+        private void FrmArizaliUrunDetayListesi_Load(object sender, EventArgs e)
+        {
+            gridControl1.DataSource = (from x in db.TBLURUNTAKIP
+                                       select new
+                                       {
+                                           x.TAKIPID,
+                                           x.SERINO,
+                                           x.TARIH,
+                                           x.ACIKLAMA
+                                       }).ToList();
+
+            gridView1.GroupPanelText = "Guruplamak için sütun başlığını buraya sürükleyin";
+        }
     }
 }

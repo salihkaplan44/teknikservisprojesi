@@ -17,14 +17,61 @@ namespace TeknikServis.Formlar
             InitializeComponent();
         }
 
-       
+        DbTeknikServisEntities db = new DbTeknikServisEntities();
+        // db.TBLFATURADETAY.Where(x => x.FATURAID == fatura_id)
         private void BtnFaturaAra_Click(object sender, EventArgs e)
         {
-          
-        private void FrmFaturaDetaylıSorgulama_Load(object sender, EventArgs e)
-        {
+            /*
+                var degerler = (from x in db.TBLFATURADETAY
+                                select new
+                                {
+                                    x.FATURADETAYID,
+                                    x.URUN,
+                                    x.ADET,
+                                    x.FIYAT,
+                                    x.TUTAR,
+                                    x.FATURAID
+                                }).where(x => x.FATURAID == fatura_id);
+             */
+            // aşağıdaki sorgu yukarıdaki gibi de yazılabilir.
 
+
+            
+            
+            try
+            {
+                if (TxtFaturaID.Text != "" && TxtFaturaID.Text != null)
+                {
+                    int fatura_id = int.Parse(TxtFaturaID.Text);
+                    var degerler = (from x in db.TBLFATURADETAY
+                                    where x.FATURAID == fatura_id
+                                    select new
+                                    {
+                                        x.FATURADETAYID,
+                                        x.URUN,
+                                        x.ADET,
+                                        x.FIYAT,
+                                        x.TUTAR,
+                                        x.FATURAID
+                                    });
+                    gridControl1.DataSource = degerler.ToList();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen boş değer girmeyiniz !", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.ToString(), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
         }
 
+        private void FrmFaturaDetaylıSorgulama_Load(object sender, EventArgs e)
+        {
+            gridView1.GroupPanelText = "Guruplamak için sütun başlığını buraya sürükleyin";
+        }
     }
 }

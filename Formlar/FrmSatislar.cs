@@ -17,6 +17,31 @@ namespace TeknikServis.Formlar
             InitializeComponent();
         }
 
+        DbTeknikServisEntities db = new DbTeknikServisEntities();
 
+        void listele()
+        {
+            var degerler = from t in db.TBLURUNHAREKET
+                           select new
+                           {
+                               t.HAREKETID,
+                               t.TBLURUN.AD,
+                               MUSTERI = t.TBLCARI.AD + " " + t.TBLCARI.SOYAD,
+                               PERSONEL = t.TBLPERSONEL.AD + " " + t.TBLPERSONEL.SOYAD,
+                               t.TARIH,
+                               t.ADET,
+                               t.FIYAT,
+                               t.URUNSERINO
+                           };
+
+            gridControl1.DataSource = degerler.ToList();
+        }
+
+
+        private void FrmSatislar_Load(object sender, EventArgs e)
+        {
+            listele();
+            gridView1.GroupPanelText = "Guruplamak için sütun başlığını buraya sürükleyin";
+        }
     }
 }

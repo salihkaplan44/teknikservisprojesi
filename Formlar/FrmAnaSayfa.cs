@@ -44,7 +44,12 @@ namespace TeknikServis.Formlar
 
 
 
-           
+            // her bir kategriden kaç tane ürün olduğunu öğrendiğimiz linq sorgusu
+            //gridControl3.DataSource = db.TBLURUN.GroupBy(u => u.TBLKATEGORI.AD).Select(y => new
+            //{
+            //    KATEGORI = y.Key,
+            //    TOPLAM = y.Count()
+            //}).ToList();
 
             gridControl3.DataSource = db.urunkategori().ToList();
 
@@ -63,7 +68,30 @@ namespace TeknikServis.Formlar
             gridControl4.DataSource = degerler.ToList();
 
 
-           
+            /*
+             Button btn = new Button();
+             btn.Text = "Topla";
+             btn.Location = new Point(10,50);
+             this.Controls.Add(btn);
+             */
+
+            /*
+              
+
+            LabelControl[] label= new LabelControl[7] { labelControl1, labelControl2, labelControl3, labelControl4, labelControl5, labelControl6, labelControl7 };
+
+           for(int i = 0; i <7; i++)
+
+            {
+
+               konu[i] = db.tbl_message.First(m => m.Id == i+1).Baslik;
+
+                ad[i] = db.tbl_message.First(m => m.Id == i+1).AdSoyad;
+
+                label[i].Text = konu[i] + " - " + ad[i];
+
+            }   
+             */
 
             string[] konu = new string[10];
 

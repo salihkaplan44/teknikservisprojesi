@@ -17,6 +17,9 @@ namespace TeknikServis.Formlar
             InitializeComponent();
         }
 
-      
+        private void FrmKurlar_Load(object sender, EventArgs e)
+        {
+            webBrowser1.Navigate("tcmb.gov.tr/kurlar/today.xml");
+        }
     }
 }

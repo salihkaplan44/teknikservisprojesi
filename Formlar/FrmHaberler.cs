@@ -17,6 +17,9 @@ namespace TeknikServis.Formlar
             InitializeComponent();
         }
 
-      
+        private void FrmHaberler_Load(object sender, EventArgs e)
+        {
+            webBrowser1.Navigate("https://www.haber.com/");
+        }
     }
 }
