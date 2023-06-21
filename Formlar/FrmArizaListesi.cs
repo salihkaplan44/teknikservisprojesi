@@ -50,7 +50,7 @@ namespace TeknikServis.Formlar
             ToplamUrunSayisi.Text = db.TBLURUN.Count().ToString();
             LblIptalEdilenIslemSayisi.Text = db.TBLURUNKABUL.Count(x => x.URUNDURUMDETAY == "İptal Edildi").ToString();
 
-            SqlConnection baglanti = new SqlConnection(@"Data Source=DESKTOP-NKLMS7G;initial catalog=DbTeknikServis;integrated security=True");
+            SqlConnection baglanti = new SqlConnection(@"Data Source=(localdb)\db;initial catalog=DbTeknikServis;integrated security=True");
             baglanti.Open();
             SqlCommand komut = new SqlCommand("SELECT URUNDURUMDETAY,COUNT(*) FROM TBLURUNKABUL GROUP BY URUNDURUMDETAY", baglanti);
             SqlDataReader dr = komut.ExecuteReader();

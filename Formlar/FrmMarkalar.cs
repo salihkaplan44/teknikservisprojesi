@@ -41,7 +41,7 @@ namespace TeknikServis.Formlar
                                             orderby x.SATISFIYAT descending
                                             select x.MARKA).FirstOrDefault();
 
-            SqlConnection baglanti = new SqlConnection(@"Data Source=DESKTOP-NKLMS7G;initial catalog=DbTeknikServis;integrated security=True");
+            SqlConnection baglanti = new SqlConnection(@"Data Source=(localdb)\db;initial catalog=DbTeknikServis;integrated security=True");
             baglanti.Open();
             SqlCommand komut = new SqlCommand("SELECT MARKA,COUNT(*) FROM TBLURUN GROUP BY MARKA", baglanti);
             SqlDataReader dr = komut.ExecuteReader();

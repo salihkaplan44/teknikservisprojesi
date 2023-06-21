@@ -18,7 +18,7 @@ namespace TeknikServis.Formlar
             InitializeComponent();
         }
 
-        SqlConnection baglanti = new SqlConnection(@"Data Source=DESKTOP-NKLMS7G;Initial Catalog=DbTeknikServis;Integrated Security=True");
+        SqlConnection baglanti = new SqlConnection(@"Data Source=(localdb)\db;initial catalog=DbTeknikServis;integrated security=True");
 
 
         DbTeknikServisEntities db = new DbTeknikServisEntities();

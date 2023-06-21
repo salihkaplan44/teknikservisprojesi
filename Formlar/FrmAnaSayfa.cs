@@ -101,11 +101,14 @@ namespace TeknikServis.Formlar
 
             for (int i = 0; i < 10; i++)
             {
-                konu[i] = db.TBLILETISIM.First(x => x.ID == i + 1).KONU;
-                ad[i] = db.TBLILETISIM.First(x => x.ID == i + 1).ADSOYAD;
-                label[i].Text = konu[i] + " - " + ad[i];
-                
+                if (db.TBLILETISIM.Any(x => x.ID == i + 1))
+                {
+                    konu[i] = db.TBLILETISIM.First(x => x.ID == i + 1).KONU;
+                    ad[i] = db.TBLILETISIM.First(x => x.ID == i + 1).ADSOYAD;
+                    label[i].Text = konu[i] + " - " + ad[i];
+                }
             }
+
 
         }
     }
